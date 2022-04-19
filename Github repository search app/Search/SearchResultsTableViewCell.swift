@@ -92,35 +92,39 @@ class SearchResultsTableViewCell: UITableViewCell {
         contentView.addSubview(starsLabel)
         contentView.addSubview(button)
 
-        ownerImage.snp.makeConstraints {
-            $0.top.equalTo(contentView.snp.top).offset(10)
-            $0.bottom.equalTo(contentView.snp.bottom).inset(10)
-            $0.leading.equalTo(contentView.snp.leading).offset(10)
-            $0.centerY.equalTo(contentView.snp.centerY)
-        }
+//        ownerImage.snp.makeConstraints {
+//            $0.top.equalTo(contentView.snp.top).offset(10)
+//            $0.bottom.equalTo(contentView.snp.bottom).inset(10)
+//            $0.leading.equalTo(contentView.snp.leading).offset(10)
+//            $0.centerY.equalTo(contentView.snp.centerY)
+//        }
 
         repoTitleLabel.snp.makeConstraints{
-            $0.leading.equalTo(ownerImage.snp.trailing).offset(10)
-            $0.bottom.equalTo(ownerImage.snp.centerY)
-            $0.trailing.equalTo(contentView.snp.trailing)
+            $0.top.equalTo(contentView.snp.top).offset(10)
+                       $0.bottom.equalTo(contentView.snp.bottom).inset(10)
+                       $0.leading.equalTo(contentView.snp.leading).offset(10)
+                       $0.centerY.equalTo(contentView.snp.centerY)
+//            $0.leading.equalTo(ownerImage.snp.trailing).offset(10)
+//            $0.bottom.equalTo(ownerImage.snp.centerY)
+//            $0.trailing.equalTo(contentView.snp.trailing)
         }
-        
-        starImage.snp.makeConstraints{
-            $0.leading.equalTo(ownerImage.snp.trailing).offset(10)
-            $0.top.equalTo(ownerImage.snp.centerY)
-        }
-        
-        repoTitleLabel.snp.makeConstraints{
-            $0.leading.equalTo(starImage.snp.trailing).offset(2)
-            $0.top.equalTo(ownerImage.snp.centerY)
-            $0.trailing.equalTo(contentView.snp.trailing)
-        }
-        
-        button.snp.makeConstraints {
-            $0.top.equalTo(contentView.snp.top)
-            $0.bottom.equalTo(contentView.snp.bottom)
-            $0.leading.equalTo(contentView.snp.leading)
-            $0.trailing.equalTo(contentView.snp.trailing)
-        }
+//
+//        starImage.snp.makeConstraints{
+//            $0.leading.equalTo(ownerImage.snp.trailing).offset(10)
+//            $0.top.equalTo(ownerImage.snp.centerY)
+//        }
+//
+//        repoTitleLabel.snp.makeConstraints{
+//            $0.leading.equalTo(starImage.snp.trailing).offset(2)
+//            $0.top.equalTo(ownerImage.snp.centerY)
+//            $0.trailing.equalTo(contentView.snp.trailing)
+//        }
+//
+//        button.snp.makeConstraints {
+//            $0.top.equalTo(contentView.snp.top)
+//            $0.bottom.equalTo(contentView.snp.bottom)
+//            $0.leading.equalTo(contentView.snp.leading)
+//            $0.trailing.equalTo(contentView.snp.trailing)
+//        }
     }
 }
