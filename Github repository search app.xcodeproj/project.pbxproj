@@ -8,23 +8,45 @@
 
 /* Begin PBXBuildFile section */
 		80DC6775D61DA32CC5E17EA9 /* libPods-Github repository search app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BA61C6C0F9A2EDB7D2717B /* libPods-Github repository search app.a */; };
+		CF67DD4528060F1B008DCE05 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67DD4428060F1B008DCE05 /* SearchViewModel.swift */; };
+		CF67DD4728060F38008DCE05 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67DD4628060F38008DCE05 /* BaseViewModel.swift */; };
+		CF67DD4928060F4C008DCE05 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67DD4828060F4C008DCE05 /* ViewModelState.swift */; };
+		CF67DD4B28060F85008DCE05 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67DD4A28060F85008DCE05 /* APIService.swift */; };
+		CF67DD4D28060FA6008DCE05 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67DD4C28060FA6008DCE05 /* TargetType.swift */; };
+		CF67DD4F28061135008DCE05 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67DD4E28061135008DCE05 /* SearchService.swift */; };
+		CF67DD51280611F9008DCE05 /* SearchResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67DD50280611F9008DCE05 /* SearchResource.swift */; };
 		CF8A8BC32804BF4700E5B0C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8BC22804BF4700E5B0C7 /* AppDelegate.swift */; };
-		CF8A8BC52804BF4700E5B0C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8BC42804BF4700E5B0C7 /* SceneDelegate.swift */; };
-		CF8A8BC72804BF4700E5B0C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8BC62804BF4700E5B0C7 /* ViewController.swift */; };
+		CF8A8BC72804BF4700E5B0C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8BC62804BF4700E5B0C7 /* SearchViewController.swift */; };
 		CF8A8BCC2804BF4900E5B0C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8A8BCB2804BF4900E5B0C7 /* Assets.xcassets */; };
 		CF8A8BCF2804BF4900E5B0C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8A8BCD2804BF4900E5B0C7 /* LaunchScreen.storyboard */; };
+		CF8A8BDD2804CBF300E5B0C7 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8BDC2804CBF300E5B0C7 /* AppNavigator.swift */; };
+		CF8A8BDF2804CC2000E5B0C7 /* SearchRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8BDE2804CC2000E5B0C7 /* SearchRoutes.swift */; };
+		CF8A8BE12804CC4000E5B0C7 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8BE02804CC4000E5B0C7 /* Navigator.swift */; };
+		CFA2B3E528076099009D9D62 /* SearchRepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2B3E428076099009D9D62 /* SearchRepoModel.swift */; };
+		CFA805F92808B07400102F78 /* SearchResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA805F82808B07400102F78 /* SearchResultsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		63BA61C6C0F9A2EDB7D2717B /* libPods-Github repository search app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Github repository search app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4BD14B53C43258D2C7C4653 /* Pods-Github repository search app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github repository search app.debug.xcconfig"; path = "Target Support Files/Pods-Github repository search app/Pods-Github repository search app.debug.xcconfig"; sourceTree = "<group>"; };
+		CF67DD4428060F1B008DCE05 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		CF67DD4628060F38008DCE05 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		CF67DD4828060F4C008DCE05 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
+		CF67DD4A28060F85008DCE05 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		CF67DD4C28060FA6008DCE05 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		CF67DD4E28061135008DCE05 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		CF67DD50280611F9008DCE05 /* SearchResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResource.swift; sourceTree = "<group>"; };
 		CF8A8BBF2804BF4700E5B0C7 /* Github repository search app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github repository search app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8A8BC22804BF4700E5B0C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CF8A8BC42804BF4700E5B0C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CF8A8BC62804BF4700E5B0C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF8A8BC62804BF4700E5B0C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CF8A8BCB2804BF4900E5B0C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF8A8BCE2804BF4900E5B0C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF8A8BD02804BF4900E5B0C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF8A8BDC2804CBF300E5B0C7 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
+		CF8A8BDE2804CC2000E5B0C7 /* SearchRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoutes.swift; sourceTree = "<group>"; };
+		CF8A8BE02804CC4000E5B0C7 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		CFA2B3E428076099009D9D62 /* SearchRepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepoModel.swift; sourceTree = "<group>"; };
+		CFA805F82808B07400102F78 /* SearchResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewCell.swift; sourceTree = "<group>"; };
 		D2715A329D39599727887FEF /* Pods-Github repository search app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github repository search app.release.xcconfig"; path = "Target Support Files/Pods-Github repository search app/Pods-Github repository search app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,7 +68,6 @@
 				A4BD14B53C43258D2C7C4653 /* Pods-Github repository search app.debug.xcconfig */,
 				D2715A329D39599727887FEF /* Pods-Github repository search app.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -93,7 +114,10 @@
 		CF8A8BD62804C46700E5B0C7 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				CF8A8BC62804BF4700E5B0C7 /* ViewController.swift */,
+				CF8A8BC62804BF4700E5B0C7 /* SearchViewController.swift */,
+				CF67DD4428060F1B008DCE05 /* SearchViewModel.swift */,
+				CFA2B3E428076099009D9D62 /* SearchRepoModel.swift */,
+				CFA805F82808B07400102F78 /* SearchResultsTableViewCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -109,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				CF8A8BC22804BF4700E5B0C7 /* AppDelegate.swift */,
-				CF8A8BC42804BF4700E5B0C7 /* SceneDelegate.swift */,
 				CF8A8BCB2804BF4900E5B0C7 /* Assets.xcassets */,
 				CF8A8BCD2804BF4900E5B0C7 /* LaunchScreen.storyboard */,
 			);
@@ -119,6 +142,8 @@
 		CF8A8BD92804C4CA00E5B0C7 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				CF67DD4A28060F85008DCE05 /* APIService.swift */,
+				CF67DD4C28060FA6008DCE05 /* TargetType.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -126,6 +151,9 @@
 		CF8A8BDA2804C4F200E5B0C7 /* Navigators */ = {
 			isa = PBXGroup;
 			children = (
+				CF8A8BE02804CC4000E5B0C7 /* Navigator.swift */,
+				CF8A8BDC2804CBF300E5B0C7 /* AppNavigator.swift */,
+				CF8A8BDE2804CC2000E5B0C7 /* SearchRoutes.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -133,6 +161,10 @@
 		CF8A8BDB2804C4FA00E5B0C7 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				CF67DD4628060F38008DCE05 /* BaseViewModel.swift */,
+				CF67DD4828060F4C008DCE05 /* ViewModelState.swift */,
+				CF67DD4E28061135008DCE05 /* SearchService.swift */,
+				CF67DD50280611F9008DCE05 /* SearchResource.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -233,9 +265,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8A8BC72804BF4700E5B0C7 /* ViewController.swift in Sources */,
+				CF8A8BC72804BF4700E5B0C7 /* SearchViewController.swift in Sources */,
+				CF67DD4528060F1B008DCE05 /* SearchViewModel.swift in Sources */,
+				CF8A8BDF2804CC2000E5B0C7 /* SearchRoutes.swift in Sources */,
+				CF8A8BDD2804CBF300E5B0C7 /* AppNavigator.swift in Sources */,
 				CF8A8BC32804BF4700E5B0C7 /* AppDelegate.swift in Sources */,
-				CF8A8BC52804BF4700E5B0C7 /* SceneDelegate.swift in Sources */,
+				CF67DD4728060F38008DCE05 /* BaseViewModel.swift in Sources */,
+				CF67DD4B28060F85008DCE05 /* APIService.swift in Sources */,
+				CF8A8BE12804CC4000E5B0C7 /* Navigator.swift in Sources */,
+				CF67DD4F28061135008DCE05 /* SearchService.swift in Sources */,
+				CF67DD4D28060FA6008DCE05 /* TargetType.swift in Sources */,
+				CF67DD4928060F4C008DCE05 /* ViewModelState.swift in Sources */,
+				CF67DD51280611F9008DCE05 /* SearchResource.swift in Sources */,
+				CFA805F92808B07400102F78 /* SearchResultsTableViewCell.swift in Sources */,
+				CFA2B3E528076099009D9D62 /* SearchRepoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +425,7 @@
 				INFOPLIST_FILE = "Github repository search app/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -411,6 +455,7 @@
 				INFOPLIST_FILE = "Github repository search app/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
