@@ -16,7 +16,7 @@ enum SearchResource: TargetType {
     var path: String {
         switch self {
         case .getSearchResults:
-            return "repositories?q=tetris"
+            return "repositories"
         case .getRepositoryDetails(let id):
             return "-"
         }
@@ -36,7 +36,7 @@ enum SearchResource: TargetType {
     var task: Task {
         switch self {
         case .getSearchResults:
-            return .requestParameters(parameters: [:], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["q":"=tetris"], encoding: URLEncoding.default)
             
         case .getRepositoryDetails:
             return .requestParameters(parameters: [:], encoding: URLEncoding.default)

@@ -65,6 +65,13 @@ class SearchResultsTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    override func prepareForReuse() {
+        ownerImage.image = nil
+        repoTitleLabel.text = nil
+        starsLabel.text = nil
+        disposeBag = DisposeBag()
+    }
+    
     func configure(model: SearchItems) {
         ownerImage.kf.setImage(with: URL(string: model.owner.avatarURL ?? ""))
         repoTitleLabel.text = model.name
@@ -75,13 +82,6 @@ class SearchResultsTableViewCell: UITableViewCell {
         else {
             starsLabel.text = "-"
         }
-    }
-
-    override func prepareForReuse() {
-        ownerImage.image = nil
-        repoTitleLabel.text = nil
-        starsLabel.text = nil
-        disposeBag = DisposeBag()
     }
 
     func setupView() {

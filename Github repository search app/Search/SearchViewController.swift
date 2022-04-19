@@ -71,6 +71,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
         searchResultsTableView.dataSource = viewModel
         view.addSubview(repositoriesTitleLabel)
         view.addSubview(searchResultsTableView)
+        searchResultsTableView.backgroundColor = .red
         searchResultsTableView.rowHeight = 80
         
         
@@ -80,7 +81,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
         searchResultsTableView.frame.size.height = .leastNormalMagnitude
         searchResultsTableView.tableHeaderView = UIView(frame: frame)
         searchResultsTableView.tableFooterView = UIView(frame: frame)
-        searchResultsTableView.separatorStyle = .none
+        searchResultsTableView.separatorStyle = .singleLine
         
         repositoriesTitleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaInsets).offset(140)
