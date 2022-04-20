@@ -47,9 +47,9 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
         navigationItem.searchController = searchController
         navigationItem.largeTitleDisplayMode = .always
         
-        setupLayout()
         bindToViewModel()
         viewModel.fetchCharacters()
+        setupLayout()
         //
     }
     
@@ -65,23 +65,22 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
     }
     
     func setupLayout() {
+        
+        view.addSubview(repositoriesTitleLabel)
+        view.addSubview(searchResultsTableView)
         searchResultsTableView.register(SearchResultsTableViewCell.self, forCellReuseIdentifier: String(describing: SearchResultsTableViewCell.self))
         searchResultsTableView.translatesAutoresizingMaskIntoConstraints = false
         searchResultsTableView.delegate = viewModel
         searchResultsTableView.dataSource = viewModel
-        view.addSubview(repositoriesTitleLabel)
-        view.addSubview(searchResultsTableView)
-        searchResultsTableView.backgroundColor = .red
-        searchResultsTableView.rowHeight = 80
-        
-        
+        searchResultsTableView.backgroundColor = .white
+        searchResultsTableView.rowHeight = 90
         
         var frame = CGRect.zero
         
         searchResultsTableView.frame.size.height = .leastNormalMagnitude
         searchResultsTableView.tableHeaderView = UIView(frame: frame)
         searchResultsTableView.tableFooterView = UIView(frame: frame)
-        searchResultsTableView.separatorStyle = .singleLine
+        searchResultsTableView.separatorStyle = .none
         
         repositoriesTitleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaInsets).offset(140)
@@ -96,6 +95,5 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
-
 }
 

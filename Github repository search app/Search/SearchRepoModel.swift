@@ -25,15 +25,15 @@ struct SearchItems: Codable {
     let owner: Owner
     var htmlUrl: String?
     var stargazersCount: Int?
-
-        enum CodingKeys: String, CodingKey {
-            case id
-            case name
-            case fullName = "full_name"
-            case owner
-            case htmlUrl = "html_url"
-            case stargazersCount = "stargazers_count"
-        }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case fullName = "full_name"
+        case owner
+        case htmlUrl = "html_url"
+        case stargazersCount = "stargazers_count"
+    }
 }
 
 struct Owner: Codable {
@@ -44,7 +44,7 @@ struct Owner: Codable {
     let url: String?
     let type: String?
     let htmlURL, reposURL: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case login, id
         case avatarURL = "avatar_url"

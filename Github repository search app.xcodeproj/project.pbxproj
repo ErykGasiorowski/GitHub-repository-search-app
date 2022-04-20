@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		80DC6775D61DA32CC5E17EA9 /* libPods-Github repository search app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BA61C6C0F9A2EDB7D2717B /* libPods-Github repository search app.a */; };
+		CF3F8D9D28109DE800D07CE1 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3F8D9C28109DE800D07CE1 /* SearchResultsViewController.swift */; };
+		CF3F8D9F28109DF600D07CE1 /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3F8D9E28109DF600D07CE1 /* SearchResultsViewModel.swift */; };
+		CF3F8DA128109E4A00D07CE1 /* CommitsHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3F8DA028109E4A00D07CE1 /* CommitsHistoryTableViewCell.swift */; };
+		CF3F8DA52810AC5F00D07CE1 /* RepoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3F8DA42810AC5F00D07CE1 /* RepoImageView.swift */; };
+		CF3F8DA72810AC6F00D07CE1 /* RepoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3F8DA62810AC6F00D07CE1 /* RepoDetailsView.swift */; };
 		CF67DD4528060F1B008DCE05 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67DD4428060F1B008DCE05 /* SearchViewModel.swift */; };
 		CF67DD4728060F38008DCE05 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67DD4628060F38008DCE05 /* BaseViewModel.swift */; };
 		CF67DD4928060F4C008DCE05 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67DD4828060F4C008DCE05 /* ViewModelState.swift */; };
@@ -29,6 +34,11 @@
 /* Begin PBXFileReference section */
 		63BA61C6C0F9A2EDB7D2717B /* libPods-Github repository search app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Github repository search app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4BD14B53C43258D2C7C4653 /* Pods-Github repository search app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github repository search app.debug.xcconfig"; path = "Target Support Files/Pods-Github repository search app/Pods-Github repository search app.debug.xcconfig"; sourceTree = "<group>"; };
+		CF3F8D9C28109DE800D07CE1 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		CF3F8D9E28109DF600D07CE1 /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
+		CF3F8DA028109E4A00D07CE1 /* CommitsHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		CF3F8DA42810AC5F00D07CE1 /* RepoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoImageView.swift; sourceTree = "<group>"; };
+		CF3F8DA62810AC6F00D07CE1 /* RepoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsView.swift; sourceTree = "<group>"; };
 		CF67DD4428060F1B008DCE05 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		CF67DD4628060F38008DCE05 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		CF67DD4828060F4C008DCE05 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
@@ -125,6 +135,11 @@
 		CF8A8BD72804C49D00E5B0C7 /* SearchResults */ = {
 			isa = PBXGroup;
 			children = (
+				CF3F8D9C28109DE800D07CE1 /* SearchResultsViewController.swift */,
+				CF3F8D9E28109DF600D07CE1 /* SearchResultsViewModel.swift */,
+				CF3F8DA028109E4A00D07CE1 /* CommitsHistoryTableViewCell.swift */,
+				CF3F8DA42810AC5F00D07CE1 /* RepoImageView.swift */,
+				CF3F8DA62810AC6F00D07CE1 /* RepoDetailsView.swift */,
 			);
 			path = SearchResults;
 			sourceTree = "<group>";
@@ -269,15 +284,20 @@
 				CF67DD4528060F1B008DCE05 /* SearchViewModel.swift in Sources */,
 				CF8A8BDF2804CC2000E5B0C7 /* SearchRoutes.swift in Sources */,
 				CF8A8BDD2804CBF300E5B0C7 /* AppNavigator.swift in Sources */,
+				CF3F8D9D28109DE800D07CE1 /* SearchResultsViewController.swift in Sources */,
 				CF8A8BC32804BF4700E5B0C7 /* AppDelegate.swift in Sources */,
 				CF67DD4728060F38008DCE05 /* BaseViewModel.swift in Sources */,
 				CF67DD4B28060F85008DCE05 /* APIService.swift in Sources */,
 				CF8A8BE12804CC4000E5B0C7 /* Navigator.swift in Sources */,
 				CF67DD4F28061135008DCE05 /* SearchService.swift in Sources */,
 				CF67DD4D28060FA6008DCE05 /* TargetType.swift in Sources */,
+				CF3F8DA72810AC6F00D07CE1 /* RepoDetailsView.swift in Sources */,
+				CF3F8D9F28109DF600D07CE1 /* SearchResultsViewModel.swift in Sources */,
 				CF67DD4928060F4C008DCE05 /* ViewModelState.swift in Sources */,
+				CF3F8DA128109E4A00D07CE1 /* CommitsHistoryTableViewCell.swift in Sources */,
 				CF67DD51280611F9008DCE05 /* SearchResource.swift in Sources */,
 				CFA805F92808B07400102F78 /* SearchResultsTableViewCell.swift in Sources */,
+				CF3F8DA52810AC5F00D07CE1 /* RepoImageView.swift in Sources */,
 				CFA2B3E528076099009D9D62 /* SearchRepoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

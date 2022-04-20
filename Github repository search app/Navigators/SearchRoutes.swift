@@ -29,7 +29,7 @@ enum SearchRoutes: Route {
     
     private func buildSearchResponseViewController(_ repository: String) -> UIViewController {
         //let viewModel
-        let controller = UIViewController()
+        let controller = SearchResultsViewController()
         return controller
     }
 }

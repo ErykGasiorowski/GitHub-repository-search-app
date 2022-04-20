@@ -22,6 +22,7 @@ class SearchResultsTableViewCell: UITableViewCell {
         imageView.image = UIImage(systemName: "image")
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 9
+        imageView.backgroundColor = .red
         imageView.clipsToBounds = true
         
         return imageView
@@ -57,13 +58,18 @@ class SearchResultsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
         setupView()
         contentView.clipsToBounds = true
+        //accessoryType = .disclosureIndicator
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0))
     }
     
     override func prepareForReuse() {
@@ -86,12 +92,14 @@ class SearchResultsTableViewCell: UITableViewCell {
     }
 
     func setupView() {
-        //button.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .systemGray6
+        contentView.layer.cornerRadius = 6
         contentView.addSubview(ownerImage)
         contentView.addSubview(repoTitleLabel)
         contentView.addSubview(starImage)
         contentView.addSubview(starsLabel)
         contentView.addSubview(button)
+        //accessoryType = .disclosureIndicator
 
         ownerImage.snp.makeConstraints {
             $0.top.equalTo(contentView.snp.top).offset(10)
@@ -119,14 +127,13 @@ class SearchResultsTableViewCell: UITableViewCell {
             $0.leading.equalTo(starImage.snp.trailing).offset(10)
             $0.top.equalTo(ownerImage.snp.centerY)
             $0.trailing.equalTo(contentView.snp.trailing)
-//            $0.bottom.equalTo(contentView.snp.bottom).inset(10)
         }
-//
-//        button.snp.makeConstraints {
-//            $0.top.equalTo(contentView.snp.top)
-//            $0.bottom.equalTo(contentView.snp.bottom)
-//            $0.leading.equalTo(contentView.snp.leading)
-//            $0.trailing.equalTo(contentView.snp.trailing)
-//        }
+
+        button.snp.makeConstraints {
+            $0.top.equalTo(contentView.snp.top)
+            $0.bottom.equalTo(contentView.snp.bottom)
+            $0.leading.equalTo(contentView.snp.leading)
+            $0.trailing.equalTo(contentView.snp.trailing)
+        }
     }
 }
