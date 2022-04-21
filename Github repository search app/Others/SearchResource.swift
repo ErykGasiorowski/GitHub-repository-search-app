@@ -18,7 +18,7 @@ enum SearchResource: TargetType {
         case .getSearchResults:
             return "repositories"
         case .getRepositoryDetails(let id):
-            return "-"
+            return "repos"
         }
     }
     
