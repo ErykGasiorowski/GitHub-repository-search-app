@@ -32,7 +32,7 @@ class RepoImageView: UIView {
     private let repoAuthorNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Repo Author Name"
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.font = .systemFont(ofSize: 26, weight: .bold)
         label.textColor = .white
         label.numberOfLines = 1
         return label
@@ -76,10 +76,10 @@ class RepoImageView: UIView {
         layoutView()
     }
     
-    func configure(with viewModel: SearchResultsViewModel) {
-//        repoAuthorNameLabel.text = viewModel.
-
-    }
+//    func configure(with viewModel: SearchResultsViewModel) {
+////        repoAuthorNameLabel.text = viewModel.
+//
+//    }
     
     func layoutView() {
         

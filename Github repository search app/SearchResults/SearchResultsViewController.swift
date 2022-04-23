@@ -12,8 +12,10 @@ import RxCocoa
 
 class SearchResultsViewController: UIViewController {
 
+    //var viewModel: SearchResultsViewModel!
+    
     var repoImageView = RepoImageView()
-//    var repoDetailsView = RepoDetailsView()    
+    var repoDetailsView = RepoDetailsView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +27,16 @@ class SearchResultsViewController: UIViewController {
     
     func layoutView() {
         view.addSubview(repoImageView)
-//        view.addSubview(repoDetailsView)
+        view.addSubview(repoDetailsView)
         
         repoImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalToSuperview().dividedBy(3)
+        }
+        
+        repoDetailsView.snp.makeConstraints {
+            $0.top.equalTo(repoImageView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     
     }

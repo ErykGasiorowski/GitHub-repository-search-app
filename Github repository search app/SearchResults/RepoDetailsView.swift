@@ -10,20 +10,24 @@ import SnapKit
 
 class RepoDetailsView: UIView {
         
-        private let repoTitleLabel: UILabel = {
-            let label = UILabel()
-            label.text = "Repo Title"
-            label.font = .systemFont(ofSize: 14, weight: .semibold)
-            label.textColor = .black
-            label.numberOfLines = 0
-            return label
-        }()
+    let repoDetailsTableView: UITableView = UITableView()
+    
+    private let repoTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Repo Title"
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = .black
+        label.numberOfLines = 0
+        return label
+    }()
         
     private let viewOnlineButton: UIButton = {
         let button = UIButton()
         button.setTitle("VIEW ONLINE", for: .normal)
-        button.backgroundColor = .systemGray5
-        button.tintColor = .systemBlue
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.backgroundColor = .systemGray6
+        button.layer.cornerRadius = 15
         
         return button
     }()
@@ -31,7 +35,7 @@ class RepoDetailsView: UIView {
     private let commitsHistoryLabel: UILabel = {
             let label = UILabel()
             label.text = "Commits History"
-            label.font = .systemFont(ofSize: 18, weight: .bold)
+            label.font = .systemFont(ofSize: 22, weight: .bold)
             label.textColor = .black
             label.numberOfLines = 1
             return label
@@ -39,20 +43,24 @@ class RepoDetailsView: UIView {
         
     private let shareRepoButton: UIButton = {
         let button = UIButton()
-        button.setTitle("VIEW ONLINE", for: .normal)
-        button.backgroundColor = .systemGray5
-        button.tintColor = .systemBlue
+        button.imageView?.image = UIImage(named: "shareIcon")
+        button.setTitle("Share Repo", for: .normal)
+        button.backgroundColor = .systemGray6
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.backgroundColor = .systemGray6
+        button.layer.cornerRadius = 6
         
         return button
     }()
         
         override init(frame: CGRect) {
               super.init(frame: frame)
-//            addSubview(repoImage)
-//            addSubview(starImage)
-//            addSubview(starsCountLabel)
-//            addSubview(repoAuthorNameLabel)
-//            addSubview(repoByLabel)
+            addSubview(repoTitleLabel)
+            addSubview(viewOnlineButton)
+            addSubview(commitsHistoryLabel)
+            addSubview(shareRepoButton)
+            //addSubview(tableView)
           }
         
         required init?(coder: NSCoder) {
@@ -62,42 +70,59 @@ class RepoDetailsView: UIView {
         override func layoutSubviews() {
             super.layoutSubviews()
             
-            //layoutView()
+            layoutView()
         }
         
-        func configure(with viewModel: SearchResultsViewModel) {
-    //        repoAuthorNameLabel.text = viewModel.
-
-        }
-        
-//        func layoutView() {
+//        func configure(with viewModel: SearchResultsViewModel) {
+//    //        repoAuthorNameLabel.text = viewModel.
 //
-//            repoImage.snp.makeConstraints {
-//                $0.top.bottom.leading.trailing.equalToSuperview()
-//            }
-//
-//            starImage.snp.makeConstraints {
-//                $0.bottom.equalTo(repoImage.snp.bottom).offset(-20)
-//                $0.leading.equalTo(repoImage.snp.leading).offset(20)
-//                $0.width.equalTo(12)
-//                $0.height.equalTo(12)
-//            }
-//
-//            starsCountLabel.snp.makeConstraints {
-//                $0.leading.equalTo(starImage.snp.trailing).offset(2)
-//                $0.bottom.equalTo(repoImage.snp.bottom).offset(-20)
-//                $0.top.equalTo(starImage.snp.top)
-//            }
-//
-//            repoAuthorNameLabel.snp.makeConstraints {
-//                $0.bottom.equalTo(starImage.snp.top).offset(-10)
-//                $0.leading.equalTo(repoImage.snp.leading).offset(20)
-//            }
-//
-//            repoByLabel.snp.makeConstraints {
-//                $0.bottom.equalTo(repoAuthorNameLabel.snp.top).offset(-10)
-//                $0.leading.equalTo(repoImage.snp.leading).offset(20)
-//            }
 //        }
+        
+        func layoutView() {
+
+            repoTitleLabel.snp.makeConstraints {
+                $0.top.leading.equalToSuperview().offset(20)
+            }
+
+            viewOnlineButton.snp.makeConstraints {
+                $0.top.equalToSuperview().offset(20)
+                $0.trailing.equalToSuperview().offset(-20)
+                $0.height.equalTo(repoTitleLabel)
+                $0.width.equalTo(110)
+            }
+
+            commitsHistoryLabel.snp.makeConstraints {
+                $0.leading.equalToSuperview().offset(20)
+                $0.top.equalTo(repoTitleLabel.snp.bottom).offset(40)
+            }
+
+            shareRepoButton.snp.makeConstraints {
+                $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-40)
+                $0.width.equalToSuperview().multipliedBy(0.9)
+                $0.height.equalTo(50)
+                $0.centerX.equalToSuperview()
+            }
+            
+//            repoDetailsTableView.register(CommitsHistoryTableViewCell.self, forCellReuseIdentifier: String(describing: CommitsHistoryTableViewCell.self))
+//            repoDetailsTableView.translatesAutoresizingMaskIntoConstraints = true
+//            //repoDetailsTableView.delegate = viewModel
+//            //repoDetailsTableView.dataSource = viewModel
+//            repoDetailsTableView.backgroundColor = .white
+////            repoDetailsTableView.rowHeight = 90
+//            
+//            var frame = CGRect.zero
+//            
+//            repoDetailsTableView.frame.size.height = .leastNormalMagnitude
+//            repoDetailsTableView.tableHeaderView = UIView(frame: frame)
+//            repoDetailsTableView.tableFooterView = UIView(frame: frame)
+//            repoDetailsTableView.separatorStyle = .none
+//            
+//            repoDetailsTableView.snp.makeConstraints {
+//                $0.top.equalTo(commitsHistoryLabel.snp.bottom).offset(10)
+//                $0.width.equalToSuperview().multipliedBy(0.9)
+//                $0.centerX.equalToSuperview()
+//                $0.bottom.equalTo(shareRepoButton.snp.top).offset(-20)
+//            }
+        }
     }
 
