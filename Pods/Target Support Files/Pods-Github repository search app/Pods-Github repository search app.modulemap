@@ -1,0 +1,6 @@
+module Pods_Github_repository_search_app {
+  umbrella header "Pods-Github repository search app-umbrella.h"
+
+  export *
+  module * { export * }
+}
