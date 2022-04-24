@@ -12,7 +12,6 @@ class RepoImageView: UIView {
 
     private let repoImage: UIImageView = {
         let imageView = UIImageView()
-//        imageView.image = UIImage(systemName: "image")
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .systemCyan
         imageView.clipsToBounds = true

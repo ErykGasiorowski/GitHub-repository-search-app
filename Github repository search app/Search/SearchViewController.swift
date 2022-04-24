@@ -17,6 +17,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
     let searchResultsTableView: UITableView = UITableView()
     
     let searchController: UISearchController = {
+        // TODO: Prepare another vc for search results
         let vc = UISearchController()
         vc.searchBar.placeholder = "Search for repository"
         vc.searchBar.searchBarStyle = .minimal
@@ -47,18 +48,30 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
         navigationItem.searchController = searchController
         navigationItem.largeTitleDisplayMode = .always
         
-        bindToViewModel()
-        viewModel.fetchCharacters()
         setupLayout()
-        //
+        bindToViewModel()
+        setupLayout()
+        viewModel.fetchData()
     }
     
     private func bindToViewModel() {
         viewModel.searchResults
-                .subscribe(onNext: { drinks in
+                .subscribe(onNext: { res in
                     self.searchResultsTableView.reloadData()
                 }).disposed(by: disposeBag)
         }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+//        guard let resultsController = ,
+//              let query = searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+//            return
+//        }
+        
+        //resultsController.delegate = self
+        
+        // Perform search
+    }
     
     func updateSearchResults(for searchController: UISearchController) {
         //

@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>BASE URL</key>
-	<string>https://api.github.com/search</string>
+	<string>https://api.github.com/</string>
 </dict>
 </plist>

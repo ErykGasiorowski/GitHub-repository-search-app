@@ -12,6 +12,12 @@ import RxCocoa
 
 class CommitsHistoryTableViewCell: UITableViewCell {
 
+    struct Model {
+        let authorsName: String?
+        let authorsEmail: String?
+        let commitMessage: String?
+    }
+    
     var disposeBag = DisposeBag()
     
     private let rowNumberLabel: UILabel = {
@@ -44,7 +50,7 @@ class CommitsHistoryTableViewCell: UITableViewCell {
     
     private let authorsEmailLabel: UILabel = {
         let label = UILabel()
-        label.text = "asdasd@ddddddddd.com"
+        label.text = "asdf@qwas.com"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = .black
         label.numberOfLines = 1
@@ -71,11 +77,6 @@ class CommitsHistoryTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0))
-//    }
-    
     override func prepareForReuse() {
         rowNumberLabel.text = nil
         commitAuthorNameLabel.text = nil
@@ -85,7 +86,10 @@ class CommitsHistoryTableViewCell: UITableViewCell {
     }
     
     func configure(model: SearchItems) {
-        //rowNumberLabel.text = tableView("", cellForRowAt: IndexPath)
+        //rowNumberLabel.text =
+        commitAuthorNameLabel.text = model.owner.login
+        authorsEmailLabel.text = model.name
+        commitMessageLabel.text = model.fullName
         
     }
 

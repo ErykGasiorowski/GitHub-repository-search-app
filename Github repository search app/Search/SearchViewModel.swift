@@ -19,7 +19,7 @@ class SearchViewModel: BaseViewModel {
         self.service = service
     }
     
-    func fetchCharacters() {
+    func fetchData() {
         service.getSearchResults()
             .subscribe(onNext: { res in
                 self.searchResults.accept(res.items ?? [])
@@ -28,8 +28,8 @@ class SearchViewModel: BaseViewModel {
             }).disposed(by: disposeBag)
     }
     
-    func navigateToDetails(_ query: String){
-            AppNavigator.shared.navigate(to: SearchRoutes.details(query), with: .push)
+    func navigateToDetails(_ repo: SearchItems){
+            AppNavigator.shared.navigate(to: SearchRoutes.details(repo), with: .push)
     }
 }
 
@@ -52,7 +52,7 @@ extension SearchViewModel: UITableViewDataSource, UITableViewDelegate {
         let item = searchResults.value[indexPath.row]
         
         cell.button.rx.tap.asObservable().bind { [weak self] _ in
-            self?.navigateToDetails(item.name ?? "-")
+            self?.navigateToDetails(item)
         }.disposed(by: cell.disposeBag)
         
         cell.configure(model: item)

@@ -13,7 +13,6 @@ extension TargetType {
     
     var baseURL: URL {
         let baseUrlString = Bundle.main.object(forInfoDictionaryKey: "BASE URL") as? String ?? ""
-        //"https://api.github.com/search/repositories?q="
         return URL(string: baseUrlString)!
     }
     

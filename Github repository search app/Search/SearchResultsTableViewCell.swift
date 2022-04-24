@@ -87,7 +87,8 @@ class SearchResultsTableViewCell: UITableViewCell {
             starsLabel.text = String(stars)
         }
         else {
-            starsLabel.text = "999"
+            print(model.stargazersCount)
+            starsLabel.text = "0"
         }
     }
 

@@ -11,7 +11,7 @@ import Moya
 
 protocol SearchService {
     func getSearchResults() -> Observable<SearchRepoModel>
-    func getRepositoryDetails(query: String) -> Observable<SearchItems>
+    func getRepositoryDetails(repo: SearchItems) -> Observable<SearchRepoModel>
 }
 
 class SearchServiceImpl: BaseApiService<SearchResource>, SearchService {
@@ -25,9 +25,9 @@ class SearchServiceImpl: BaseApiService<SearchResource>, SearchService {
         }
     }
     
-    func getRepositoryDetails(query: String) -> Observable<SearchItems> {
-        return request(for: .getRepositoryDetails(query))
-            .map {(item: SearchItems, _ response: Response) in
+    func getRepositoryDetails(repo: SearchItems) -> Observable<SearchRepoModel> {
+        return request(for: .getRepositoryDetails(repo))
+            .map {(item: SearchRepoModel, _ response: Response) in
                 return item
         }
     }

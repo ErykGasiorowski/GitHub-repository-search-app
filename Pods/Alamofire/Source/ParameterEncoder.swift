@@ -41,11 +41,13 @@ public protocol ParameterEncoder {
 /// A `ParameterEncoder` that encodes types as JSON body data.
 ///
 /// If no `Content-Type` header is already set on the provided `URLRequest`s, it's set to `application/json`.
+@available(iOS 13.0, *)
 open class JSONParameterEncoder: ParameterEncoder {
     /// Returns an encoder with default parameters.
     public static var `default`: JSONParameterEncoder { JSONParameterEncoder() }
 
     /// Returns an encoder with `JSONEncoder.outputFormatting` set to `.prettyPrinted`.
+    @available(iOS 13.0, *)
     public static var prettyPrinted: JSONParameterEncoder {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
@@ -54,7 +56,7 @@ open class JSONParameterEncoder: ParameterEncoder {
     }
 
     /// Returns an encoder with `JSONEncoder.outputFormatting` set to `.sortedKeys`.
-    @available(macOS 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
+    @available(macOS 10.13, iOS 13.0, tvOS 11.0, watchOS 4.0, *)
     public static var sortedKeys: JSONParameterEncoder {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .sortedKeys
@@ -93,6 +95,7 @@ open class JSONParameterEncoder: ParameterEncoder {
 }
 
 #if swift(>=5.5)
+@available(iOS 13.0, *)
 extension ParameterEncoder where Self == JSONParameterEncoder {
     /// Provides a default `JSONParameterEncoder` instance.
     public static var json: JSONParameterEncoder { JSONParameterEncoder() }

@@ -21,10 +21,11 @@ struct SearchRepoModel: Codable {
 
 struct SearchItems: Codable {
     let id: Int?
-    let name, fullName: String?
+    let name: String
+    let fullName: String?
     let owner: Owner
-    var htmlUrl: String?
-    var stargazersCount: Int?
+    let htmlUrl: String?
+    let stargazersCount: Int?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -37,7 +38,7 @@ struct SearchItems: Codable {
 }
 
 struct Owner: Codable {
-    let login: String?
+    let login: String
     let id: Int?
     let avatarURL: String?
     let gravatarID: String?
