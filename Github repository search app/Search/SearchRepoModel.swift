@@ -9,7 +9,7 @@ import Foundation
 
 struct SearchRepoModel: Codable {
     var totalCount: Int?
-    var incompleteResults: Int?
+    var incompleteResults: Bool
     var items: [SearchItems]
     
     enum CodingKeys: String, CodingKey {
@@ -22,7 +22,7 @@ struct SearchRepoModel: Codable {
 struct SearchItems: Codable {
     let id: Int?
     let name: String
-    let fullName: String?
+    let fullName: String
     let owner: Owner
     let htmlUrl: String?
     let stargazersCount: Int?

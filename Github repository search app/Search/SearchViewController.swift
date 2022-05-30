@@ -27,6 +27,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
         
         return vc
     }()
+
     
     let repositoriesTitleLabel: UILabel = {
        let label = UILabel()

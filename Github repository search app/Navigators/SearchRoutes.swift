@@ -10,14 +10,14 @@ import UIKit
 
 enum SearchRoutes: Route {
     case list
-    case details(SearchItems)
+    case details(String)
 
     var screen: UIViewController {
         switch self {
         case .list:
             return buildSearchViewController()
         case .details(let repo):
-            return buildSearchResponseViewController(repo: repo)
+            return buildSearchResponseViewController(repo)
         }
     }
     
@@ -27,9 +27,9 @@ enum SearchRoutes: Route {
         return controller
     }
     
-    private func buildSearchResponseViewController(repo: SearchItems) -> UIViewController {
+    private func buildSearchResponseViewController(_ repo: String) -> UIViewController {
         let viewModel = SearchResultsViewModel(repo: repo, service: SearchServiceImpl.shared)
-        let controller = SearchResultsViewController()
+        let controller = SearchResultsViewController(viewModel: viewModel)
         return controller
     }
 }

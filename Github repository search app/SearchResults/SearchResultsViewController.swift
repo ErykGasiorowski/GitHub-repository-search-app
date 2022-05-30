@@ -12,10 +12,10 @@ import RxCocoa
 
 class SearchResultsViewController: UIViewController {
 
-    var viewModel: SearchResultsViewModel!
+    private var viewModel: SearchResultsViewModel
     let disposeBag = DisposeBag()
     
-    var repoImageView = RepoImageView()
+    private let repoImageView = RepoImageView()
     //var repoDetailsView = RepoDetailsView()
     
     let repoDetailsTableView: UITableView = UITableView()
@@ -62,12 +62,25 @@ class SearchResultsViewController: UIViewController {
         return button
     }()
     
+    init(viewModel: SearchResultsViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
 
         layoutView()
-        //bindToViewModel()
+        bindToViewModel()
+        setupBehavior()
+        viewModel.getDataForTableView()
+        
         //viewModel.fetchData()
     }
     
@@ -76,11 +89,35 @@ class SearchResultsViewController: UIViewController {
 //
 //        }
     
-//    private func bindToViewModel() {
-//        viewModel.details.subscribe(onNext: { res in
-//                    self.repoDetailsTableView.reloadData()
-//                }).disposed(by: disposeBag)
+    private func bindToViewModel() {
+        viewModel.details.subscribe(onNext: { res in
+                    self.repoDetailsTableView.reloadData()
+                }).disposed(by: disposeBag)
+        }
+    
+    func setupBehavior() {
+        viewModel.onSuccess.bind {
+            self.repoImageView.setup(model: $0)
+        }
+        
+        viewModel.onError.bind {
+            print($0)
+        }
+    }
+    
+    //MARK: SHARE BUTTON
+//    @objc private func didTapShare() {
+//        guard let url = URL(string: playlist.external_urls["spotify"] ?? "") else {
+//            return
 //        }
+//
+//        let vc = UIActivityViewController(
+//            activityItems: [url],
+//            applicationActivities: []
+//        )
+//        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+//        present(vc, animated: true)
+//    }
     
     func layoutView() {
         view.addSubview(repoImageView)

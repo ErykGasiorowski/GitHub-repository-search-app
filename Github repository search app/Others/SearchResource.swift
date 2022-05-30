@@ -11,14 +11,14 @@ import Moya
 enum SearchResource: TargetType {
     
     case getSearchResults
-    case getRepositoryDetails(SearchItems)
+    case getRepositoryDetails(String)
     
     var path: String {
         switch self {
         case .getSearchResults:
             return "search/repositories"
         case .getRepositoryDetails(let repo):
-            return "repos/\(repo.owner.login)/\(repo.name)"
+            return "repos/\(repo)"
         }
     }
     

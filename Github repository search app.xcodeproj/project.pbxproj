@@ -29,6 +29,7 @@
 		CFA2B3E528076099009D9D62 /* SearchRepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2B3E428076099009D9D62 /* SearchRepoModel.swift */; };
 		CFA4CBDC2815DA7F00652FC0 /* CommitHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA4CBDB2815DA7F00652FC0 /* CommitHistoryModel.swift */; };
 		CFA805F92808B07400102F78 /* SearchResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA805F82808B07400102F78 /* SearchResultsTableViewCell.swift */; };
+		CFDCC1D82843B5AE00538903 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDCC1D72843B5AE00538903 /* RepoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		CFA2B3E428076099009D9D62 /* SearchRepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepoModel.swift; sourceTree = "<group>"; };
 		CFA4CBDB2815DA7F00652FC0 /* CommitHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitHistoryModel.swift; sourceTree = "<group>"; };
 		CFA805F82808B07400102F78 /* SearchResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewCell.swift; sourceTree = "<group>"; };
+		CFDCC1D72843B5AE00538903 /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
 		D2715A329D39599727887FEF /* Pods-Github repository search app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github repository search app.release.xcconfig"; path = "Target Support Files/Pods-Github repository search app/Pods-Github repository search app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 				CF3F8DA028109E4A00D07CE1 /* CommitsHistoryTableViewCell.swift */,
 				CF3F8DA42810AC5F00D07CE1 /* RepoImageView.swift */,
 				CFA4CBDB2815DA7F00652FC0 /* CommitHistoryModel.swift */,
+				CFDCC1D72843B5AE00538903 /* RepoModel.swift */,
 			);
 			path = SearchResults;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				CF67DD4D28060FA6008DCE05 /* TargetType.swift in Sources */,
 				CF3F8D9F28109DF600D07CE1 /* SearchResultsViewModel.swift in Sources */,
 				CF67DD4928060F4C008DCE05 /* ViewModelState.swift in Sources */,
+				CFDCC1D82843B5AE00538903 /* RepoModel.swift in Sources */,
 				CF3F8DA128109E4A00D07CE1 /* CommitsHistoryTableViewCell.swift in Sources */,
 				CF67DD51280611F9008DCE05 /* SearchResource.swift in Sources */,
 				CFA805F92808B07400102F78 /* SearchResultsTableViewCell.swift in Sources */,

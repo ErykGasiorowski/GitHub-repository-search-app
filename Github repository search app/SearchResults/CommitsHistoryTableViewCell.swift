@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 import RxSwift
 import RxCocoa
 
@@ -85,11 +86,11 @@ class CommitsHistoryTableViewCell: UITableViewCell {
         disposeBag = DisposeBag()
     }
     
-    func configure(model: SearchItems) {
+    func config(model: Model) {
         //rowNumberLabel.text =
-        commitAuthorNameLabel.text = model.owner.login
-        authorsEmailLabel.text = model.name
-        commitMessageLabel.text = model.fullName
+        commitAuthorNameLabel.text = model.authorsName
+        authorsEmailLabel.text = model.authorsEmail
+        commitMessageLabel.text = model.commitMessage
         
     }
 

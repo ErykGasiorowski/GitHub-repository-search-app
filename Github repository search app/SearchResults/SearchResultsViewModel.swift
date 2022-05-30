@@ -12,13 +12,14 @@ import RxCocoa
 class SearchResultsViewModel: BaseViewModel {
     
     private let service: SearchService
-    private let repo: SearchItems
+    private let repo: String
     
-    let onSuccess = PublishSubject<(CommitsHistoryTableViewCell.Model)>()
+    let onSuccess = PublishSubject<RepoImageView.Model>()
     let onError = PublishSubject<String>()
-    let details = BehaviorRelay<[SearchItems]>(value: [])
+    let details = PublishSubject<Repo>()
+    //let details = BehaviorRelay<[SearchItems]>(value: [])
     
-    init(repo: SearchItems, service: SearchService) {
+    init(repo: String, service: SearchService = SearchServiceImpl()) {
         self.repo = repo
         self.service = service
     }
@@ -26,7 +27,8 @@ class SearchResultsViewModel: BaseViewModel {
     func fetchData() {
         service.getRepositoryDetails(repo: repo)
             .subscribe(onNext: { res in
-                self.details.accept(res.items)
+                self.details.onNext(res)
+                //self.details.accept(res)
             }, onError: { error in
                 print(error)
             }).disposed(by: disposeBag)
@@ -34,7 +36,7 @@ class SearchResultsViewModel: BaseViewModel {
     
     func getDataForTableView() {
         service.getRepositoryDetails(repo: repo).subscribe(onNext: { result in
-            let model = CommitsHistoryTableViewCell.Model(authorsName: result.items.first?.name, authorsEmail: result.items.first?.fullName, commitMessage: result.items.first?.owner.avatarURL)
+            let model = RepoImageView.Model(numberOfStars: result.stargazersCount, authorsName: result.owner.login, repoImage: result.owner.avatarURL)
             
             self.onSuccess.onNext(model)
         }, onError: { [weak self] error in
@@ -51,22 +53,24 @@ extension SearchResultsViewModel: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView
-                .dequeueReusableCell(withIdentifier: String(describing: SearchResultsTableViewCell.self), for: indexPath) as? SearchResultsTableViewCell
+                .dequeueReusableCell(withIdentifier: String(describing: CommitsHistoryTableViewCell.self), for: indexPath) as? CommitsHistoryTableViewCell
         else {
             return UITableViewCell()
         }
         
-        if details.value.count <= indexPath.row {
-            return cell
-        }
+//        if details.value.count <= indexPath.row {
+//            return cell
+//        }
         
-        let item = details.value[indexPath.row]
+        //let item = details.value[indexPath.row]
+        
+        
         
 //        cell.button.rx.tap.asObservable().bind { [weak self] _ in
 //            self?.navigateToDetails(item.name ?? "-")
 //        }.disposed(by: cell.disposeBag)
         
-        cell.configure(model: item)
+        //cell.config(model: onSuccess)
         
         return cell
     }

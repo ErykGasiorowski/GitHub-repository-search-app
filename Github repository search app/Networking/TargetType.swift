@@ -29,8 +29,8 @@ extension TargetType {
     
     static private var baseHeaders: [String: String] {
         return [
-            HTTPHeader.accept.rawValue: "application/json",
-            HTTPHeader.contentType.rawValue: "application/json"
+            HTTPHeader.accept.rawValue: "application/vnd.github.v3+json",//"application/json",
+            HTTPHeader.contentType.rawValue: "application/vnd.github.v3+json"//"application/json"
         ]
     }
     

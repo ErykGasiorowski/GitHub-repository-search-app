@@ -28,8 +28,10 @@ class SearchViewModel: BaseViewModel {
             }).disposed(by: disposeBag)
     }
     
-    func navigateToDetails(_ repo: SearchItems){
+    func navigateToDetails(_ repo: String?){
+        if let repo = repo {
             AppNavigator.shared.navigate(to: SearchRoutes.details(repo), with: .push)
+        }
     }
 }
 
@@ -52,7 +54,7 @@ extension SearchViewModel: UITableViewDataSource, UITableViewDelegate {
         let item = searchResults.value[indexPath.row]
         
         cell.button.rx.tap.asObservable().bind { [weak self] _ in
-            self?.navigateToDetails(item)
+            self?.navigateToDetails(item.fullName)
         }.disposed(by: cell.disposeBag)
         
         cell.configure(model: item)
