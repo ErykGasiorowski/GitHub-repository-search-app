@@ -41,7 +41,7 @@ class SearchResultsViewController: UIViewController {
         button.setTitleColor(.systemBlue, for: .normal)
         button.backgroundColor = .systemGray6
         button.layer.cornerRadius = 15
-        //button.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapViewOnline), for: .touchUpInside)
         
         return button
     }()
@@ -128,6 +128,14 @@ class SearchResultsViewController: UIViewController {
         )
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true)
+    }
+    
+    @objc private func didTapViewOnline() {
+        guard let url = URL(string: url ?? "") else {
+            return
+        }
+        
+        UIApplication.shared.open(url)
     }
     
     func layoutView() {
