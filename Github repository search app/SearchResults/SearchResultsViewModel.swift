@@ -13,11 +13,14 @@ class SearchResultsViewModel: BaseViewModel {
     
     private let service: SearchService
     private let repo: String
+    //private let commit: String
     
-    let onSuccess = PublishSubject<RepoImageView.Model>()
+    let onSuccessRepo = PublishSubject<RepoImageView.Model>()
+    //let onSuccessCommit = PublishSubject<CommitsHistoryTableViewCell.Model>()
     let onError = PublishSubject<String>()
-    let details = PublishSubject<Repo>()
-    //let details = BehaviorRelay<[SearchItems]>(value: [])
+    let details = PublishSubject<SearchResultsViewController.Details>()
+    let repoUrl = PublishSubject<String>()
+    let detailz = BehaviorRelay<[WelcomeElement]>(value: [])
     
     init(repo: String, service: SearchService = SearchServiceImpl()) {
         self.repo = repo
@@ -25,9 +28,10 @@ class SearchResultsViewModel: BaseViewModel {
     }
     
     func fetchData() {
-        service.getRepositoryDetails(repo: repo)
+        service.getCommits(repo: repo)
             .subscribe(onNext: { res in
-                self.details.onNext(res)
+                self.detailz.accept(res ?? [])
+                //self.detailz.onNext(res)
                 //self.details.accept(res)
             }, onError: { error in
                 print(error)
@@ -37,8 +41,11 @@ class SearchResultsViewModel: BaseViewModel {
     func getDataForTableView() {
         service.getRepositoryDetails(repo: repo).subscribe(onNext: { result in
             let model = RepoImageView.Model(numberOfStars: result.stargazersCount, authorsName: result.owner.login, repoImage: result.owner.avatarURL)
+            //let repoUrl = SearchResultsViewController.Details(repoUrl: result.url)
             
-            self.onSuccess.onNext(model)
+            self.onSuccessRepo.onNext(model)
+            self.repoUrl.onNext(result.htmlURL)
+            //self.details.onNext(repoUrl)
         }, onError: { [weak self] error in
             self?.onError.onNext(error.localizedDescription)
         }).disposed(by: disposeBag)
@@ -58,19 +65,14 @@ extension SearchResultsViewModel: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-//        if details.value.count <= indexPath.row {
-//            return cell
-//        }
+        if detailz.value.count <= indexPath.row {
+            return cell
+        }
         
-        //let item = details.value[indexPath.row]
+        let item = detailz.value[indexPath.row]
         
         
-        
-//        cell.button.rx.tap.asObservable().bind { [weak self] _ in
-//            self?.navigateToDetails(item.name ?? "-")
-//        }.disposed(by: cell.disposeBag)
-        
-        //cell.config(model: onSuccess)
+        cell.config(model: item)
         
         return cell
     }

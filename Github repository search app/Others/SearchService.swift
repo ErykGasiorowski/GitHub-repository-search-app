@@ -12,6 +12,7 @@ import Moya
 protocol SearchService {
     func getSearchResults() -> Observable<SearchRepoModel>
     func getRepositoryDetails(repo: String) -> Observable<Repo>
+    func getCommits(repo: String) -> Observable<[WelcomeElement]>
 }
 
 class SearchServiceImpl: BaseApiService<SearchResource>, SearchService {
@@ -28,6 +29,13 @@ class SearchServiceImpl: BaseApiService<SearchResource>, SearchService {
     func getRepositoryDetails(repo: String) -> Observable<Repo> {
         return request(for: .getRepositoryDetails(repo))
             .map {(item: Repo, _ response: Response) in
+                return item
+        }
+    }
+    
+    func getCommits(repo: String) -> Observable<[WelcomeElement]> {
+        return request(for: .getCommits(repo))
+            .map {(item: [WelcomeElement], _ response: Response) in
                 return item
         }
     }

@@ -12,11 +12,16 @@ import RxCocoa
 
 class SearchResultsViewController: UIViewController {
 
+    struct Details {
+        let repoUrl: String
+    }
+    
     private var viewModel: SearchResultsViewModel
     let disposeBag = DisposeBag()
     
     private let repoImageView = RepoImageView()
-    //var repoDetailsView = RepoDetailsView()
+//    private let repo: Repo
+    private var url = ""
     
     let repoDetailsTableView: UITableView = UITableView()
     
@@ -36,6 +41,7 @@ class SearchResultsViewController: UIViewController {
         button.setTitleColor(.systemBlue, for: .normal)
         button.backgroundColor = .systemGray6
         button.layer.cornerRadius = 15
+        //button.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
         
         return button
     }()
@@ -58,6 +64,7 @@ class SearchResultsViewController: UIViewController {
         button.setTitleColor(.systemBlue, for: .normal)
         button.backgroundColor = .systemGray6
         button.layer.cornerRadius = 6
+        button.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
         
         return button
     }()
@@ -75,11 +82,12 @@ class SearchResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
+        viewModel.getDataForTableView()
         layoutView()
         bindToViewModel()
         setupBehavior()
-        viewModel.getDataForTableView()
+        //viewModel.getDataForTableView()
+        viewModel.fetchData()
         
         //viewModel.fetchData()
     }
@@ -90,34 +98,37 @@ class SearchResultsViewController: UIViewController {
 //        }
     
     private func bindToViewModel() {
-        viewModel.details.subscribe(onNext: { res in
+        viewModel.detailz.subscribe(onNext: { res in
                     self.repoDetailsTableView.reloadData()
                 }).disposed(by: disposeBag)
         }
     
     func setupBehavior() {
-        viewModel.onSuccess.bind {
+        viewModel.onSuccessRepo.bind {
             self.repoImageView.setup(model: $0)
         }
         
         viewModel.onError.bind {
             print($0)
         }
+        
+        viewModel.repoUrl.bind {
+            self.url = $0
+        }
     }
-    
-    //MARK: SHARE BUTTON
-//    @objc private func didTapShare() {
-//        guard let url = URL(string: playlist.external_urls["spotify"] ?? "") else {
-//            return
-//        }
-//
-//        let vc = UIActivityViewController(
-//            activityItems: [url],
-//            applicationActivities: []
-//        )
-//        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-//        present(vc, animated: true)
-//    }
+
+    @objc private func didTapShare() {
+        guard let url = URL(string: url  ?? "") else {
+            return
+        }
+
+        let vc = UIActivityViewController(
+            activityItems: [url],
+            applicationActivities: []
+        )
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+    }
     
     func layoutView() {
         view.addSubview(repoImageView)
@@ -166,7 +177,8 @@ class SearchResultsViewController: UIViewController {
         repoDetailsTableView.delegate = viewModel
         repoDetailsTableView.dataSource = viewModel
         repoDetailsTableView.backgroundColor = .red
-        repoDetailsTableView.rowHeight = 30
+        repoDetailsTableView.rowHeight = 110
+        repoDetailsTableView.clipsToBounds = true
         
         var frame = CGRect.zero
         
@@ -174,6 +186,7 @@ class SearchResultsViewController: UIViewController {
         repoDetailsTableView.tableHeaderView = UIView(frame: frame)
         repoDetailsTableView.tableFooterView = UIView(frame: frame)
         repoDetailsTableView.separatorStyle = .singleLine
+        //repoDetailsTableView.auto
         
         repoDetailsTableView.snp.makeConstraints {
             $0.top.equalTo(commitsHistoryLabel.snp.bottom).offset(10)

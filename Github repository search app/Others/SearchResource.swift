@@ -12,6 +12,7 @@ enum SearchResource: TargetType {
     
     case getSearchResults
     case getRepositoryDetails(String)
+    case getCommits(String)
     
     var path: String {
         switch self {
@@ -19,12 +20,14 @@ enum SearchResource: TargetType {
             return "search/repositories"
         case .getRepositoryDetails(let repo):
             return "repos/\(repo)"
+        case .getCommits(let repo):
+            return "repos/\(repo)/commits"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getSearchResults, .getRepositoryDetails:
+        case .getSearchResults, .getRepositoryDetails, .getCommits:
             return .get
         }
     }
@@ -39,6 +42,9 @@ enum SearchResource: TargetType {
             return .requestParameters(parameters: ["q":"=tetris"], encoding: URLEncoding.default)
             
         case .getRepositoryDetails:
+            return .requestParameters(parameters: [:], encoding: URLEncoding.default)
+            
+        case .getCommits:
             return .requestParameters(parameters: [:], encoding: URLEncoding.default)
         }
     }

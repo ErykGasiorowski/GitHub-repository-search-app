@@ -13,11 +13,11 @@ import RxCocoa
 
 class CommitsHistoryTableViewCell: UITableViewCell {
 
-    struct Model {
-        let authorsName: String?
-        let authorsEmail: String?
-        let commitMessage: String?
-    }
+//    struct Model {
+//        let authorsName: String?
+//        let authorsEmail: String?
+//        let commitMessage: String?
+//    }
     
     var disposeBag = DisposeBag()
     
@@ -86,11 +86,11 @@ class CommitsHistoryTableViewCell: UITableViewCell {
         disposeBag = DisposeBag()
     }
     
-    func config(model: Model) {
+    func config(model: WelcomeElement) {
         //rowNumberLabel.text =
-        commitAuthorNameLabel.text = model.authorsName
-        authorsEmailLabel.text = model.authorsEmail
-        commitMessageLabel.text = model.commitMessage
+        commitAuthorNameLabel.text = model.commit.author.name
+        authorsEmailLabel.text = model.commit.author.email
+        commitMessageLabel.text = model.commit.message
         
     }
 
@@ -104,7 +104,7 @@ class CommitsHistoryTableViewCell: UITableViewCell {
         //accessoryType = .disclosureIndicator
 
         rowNumberLabel.snp.makeConstraints {
-            $0.leading.equalTo(contentView.snp.leading).offset(20)
+            $0.leading.equalTo(contentView.snp.leading).offset(5)
             $0.centerY.equalToSuperview()
         }
 
