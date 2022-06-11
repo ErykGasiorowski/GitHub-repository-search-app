@@ -15,14 +15,19 @@ class SearchViewModel: BaseViewModel {
     
     let searchResults = BehaviorRelay<[SearchItems]>(value: [])
     
+    var query = ""
+    
     init(service: SearchService) {
         self.service = service
     }
     
     func fetchData() {
-        service.getSearchResults()
+        service.getSearchResults(query: query)
             .subscribe(onNext: { res in
+                //var results: [SearchItems] = []
+                
                 self.searchResults.accept(res.items ?? [])
+                //results.append(contentsOf: res.items)
             }, onError: { error in
                 print(error)
             }).disposed(by: disposeBag)

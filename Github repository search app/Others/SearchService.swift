@@ -10,7 +10,7 @@ import RxSwift
 import Moya
 
 protocol SearchService {
-    func getSearchResults() -> Observable<SearchRepoModel>
+    func getSearchResults(query: String) -> Observable<SearchRepoModel>
     func getRepositoryDetails(repo: String) -> Observable<Repo>
     func getCommits(repo: String) -> Observable<[WelcomeElement]>
 }
@@ -19,8 +19,8 @@ class SearchServiceImpl: BaseApiService<SearchResource>, SearchService {
     
     static var shared = SearchServiceImpl()
     
-    func getSearchResults() -> Observable<SearchRepoModel> {
-        return request(for: .getSearchResults)
+    func getSearchResults(query: String) -> Observable<SearchRepoModel> {
+        return request(for: .getSearchResults(query))
             .map {(items: SearchRepoModel, _ response: Response) in
                 return items
         }

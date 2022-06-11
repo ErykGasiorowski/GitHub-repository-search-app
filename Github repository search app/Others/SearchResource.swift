@@ -10,13 +10,13 @@ import Moya
 
 enum SearchResource: TargetType {
     
-    case getSearchResults
+    case getSearchResults(String)
     case getRepositoryDetails(String)
     case getCommits(String)
     
     var path: String {
         switch self {
-        case .getSearchResults:
+        case .getSearchResults(let query):
             return "search/repositories"
         case .getRepositoryDetails(let repo):
             return "repos/\(repo)"
@@ -38,8 +38,8 @@ enum SearchResource: TargetType {
     
     var task: Task {
         switch self {
-        case .getSearchResults:
-            return .requestParameters(parameters: ["q":"=tetris"], encoding: URLEncoding.default)
+        case .getSearchResults(let query):
+            return .requestParameters(parameters: ["q":"?\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"], encoding: URLEncoding.default)
             
         case .getRepositoryDetails:
             return .requestParameters(parameters: [:], encoding: URLEncoding.default)
