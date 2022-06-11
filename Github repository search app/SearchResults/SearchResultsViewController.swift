@@ -12,11 +12,16 @@ import RxCocoa
 
 class SearchResultsViewController: UIViewController {
 
-    var viewModel: SearchResultsViewModel!
+    struct Details {
+        let repoUrl: String
+    }
+    
+    private var viewModel: SearchResultsViewModel
     let disposeBag = DisposeBag()
     
-    var repoImageView = RepoImageView()
-    //var repoDetailsView = RepoDetailsView()
+    private let repoImageView = RepoImageView()
+//    private let repo: Repo
+    private var url = ""
     
     let repoDetailsTableView: UITableView = UITableView()
     
@@ -36,6 +41,7 @@ class SearchResultsViewController: UIViewController {
         button.setTitleColor(.systemBlue, for: .normal)
         button.backgroundColor = .systemGray6
         button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(didTapViewOnline), for: .touchUpInside)
         
         return button
     }()
@@ -58,16 +64,31 @@ class SearchResultsViewController: UIViewController {
         button.setTitleColor(.systemBlue, for: .normal)
         button.backgroundColor = .systemGray6
         button.layer.cornerRadius = 6
+        button.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
         
         return button
     }()
     
+    init(viewModel: SearchResultsViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
+        viewModel.getDataForTableView()
         layoutView()
-        //bindToViewModel()
+        bindToViewModel()
+        setupBehavior()
+        //viewModel.getDataForTableView()
+        viewModel.fetchData()
+        
         //viewModel.fetchData()
     }
     
@@ -76,11 +97,46 @@ class SearchResultsViewController: UIViewController {
 //
 //        }
     
-//    private func bindToViewModel() {
-//        viewModel.details.subscribe(onNext: { res in
-//                    self.repoDetailsTableView.reloadData()
-//                }).disposed(by: disposeBag)
-//        }
+    private func bindToViewModel() {
+        viewModel.detailz.subscribe(onNext: { res in
+                    self.repoDetailsTableView.reloadData()
+                }).disposed(by: disposeBag)
+        }
+    
+    func setupBehavior() {
+        viewModel.onSuccessRepo.bind {
+            self.repoImageView.setup(model: $0)
+        }
+        
+        viewModel.onError.bind {
+            print($0)
+        }
+        
+        viewModel.repoUrl.bind {
+            self.url = $0
+        }
+    }
+
+    @objc private func didTapShare() {
+        guard let url = URL(string: url  ?? "") else {
+            return
+        }
+
+        let vc = UIActivityViewController(
+            activityItems: [url],
+            applicationActivities: []
+        )
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+    }
+    
+    @objc private func didTapViewOnline() {
+        guard let url = URL(string: url ?? "") else {
+            return
+        }
+        
+        UIApplication.shared.open(url)
+    }
     
     func layoutView() {
         view.addSubview(repoImageView)
@@ -129,7 +185,8 @@ class SearchResultsViewController: UIViewController {
         repoDetailsTableView.delegate = viewModel
         repoDetailsTableView.dataSource = viewModel
         repoDetailsTableView.backgroundColor = .red
-        repoDetailsTableView.rowHeight = 30
+        repoDetailsTableView.rowHeight = 110
+        repoDetailsTableView.clipsToBounds = true
         
         var frame = CGRect.zero
         
@@ -137,6 +194,7 @@ class SearchResultsViewController: UIViewController {
         repoDetailsTableView.tableHeaderView = UIView(frame: frame)
         repoDetailsTableView.tableFooterView = UIView(frame: frame)
         repoDetailsTableView.separatorStyle = .singleLine
+        //repoDetailsTableView.auto
         
         repoDetailsTableView.snp.makeConstraints {
             $0.top.equalTo(commitsHistoryLabel.snp.bottom).offset(10)

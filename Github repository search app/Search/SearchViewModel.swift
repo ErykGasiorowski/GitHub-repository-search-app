@@ -15,21 +15,28 @@ class SearchViewModel: BaseViewModel {
     
     let searchResults = BehaviorRelay<[SearchItems]>(value: [])
     
+    var query = ""
+    
     init(service: SearchService) {
         self.service = service
     }
     
     func fetchData() {
-        service.getSearchResults()
+        service.getSearchResults(query: query)
             .subscribe(onNext: { res in
+                //var results: [SearchItems] = []
+                
                 self.searchResults.accept(res.items ?? [])
+                //results.append(contentsOf: res.items)
             }, onError: { error in
                 print(error)
             }).disposed(by: disposeBag)
     }
     
-    func navigateToDetails(_ repo: SearchItems){
+    func navigateToDetails(_ repo: String?){
+        if let repo = repo {
             AppNavigator.shared.navigate(to: SearchRoutes.details(repo), with: .push)
+        }
     }
 }
 
@@ -52,7 +59,7 @@ extension SearchViewModel: UITableViewDataSource, UITableViewDelegate {
         let item = searchResults.value[indexPath.row]
         
         cell.button.rx.tap.asObservable().bind { [weak self] _ in
-            self?.navigateToDetails(item)
+            self?.navigateToDetails(item.fullName)
         }.disposed(by: cell.disposeBag)
         
         cell.configure(model: item)

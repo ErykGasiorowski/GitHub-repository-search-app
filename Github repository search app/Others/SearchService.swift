@@ -10,24 +10,32 @@ import RxSwift
 import Moya
 
 protocol SearchService {
-    func getSearchResults() -> Observable<SearchRepoModel>
-    func getRepositoryDetails(repo: SearchItems) -> Observable<SearchRepoModel>
+    func getSearchResults(query: String) -> Observable<SearchRepoModel>
+    func getRepositoryDetails(repo: String) -> Observable<Repo>
+    func getCommits(repo: String) -> Observable<[WelcomeElement]>
 }
 
 class SearchServiceImpl: BaseApiService<SearchResource>, SearchService {
     
     static var shared = SearchServiceImpl()
     
-    func getSearchResults() -> Observable<SearchRepoModel> {
-        return request(for: .getSearchResults)
+    func getSearchResults(query: String) -> Observable<SearchRepoModel> {
+        return request(for: .getSearchResults(query))
             .map {(items: SearchRepoModel, _ response: Response) in
                 return items
         }
     }
     
-    func getRepositoryDetails(repo: SearchItems) -> Observable<SearchRepoModel> {
+    func getRepositoryDetails(repo: String) -> Observable<Repo> {
         return request(for: .getRepositoryDetails(repo))
-            .map {(item: SearchRepoModel, _ response: Response) in
+            .map {(item: Repo, _ response: Response) in
+                return item
+        }
+    }
+    
+    func getCommits(repo: String) -> Observable<[WelcomeElement]> {
+        return request(for: .getCommits(repo))
+            .map {(item: [WelcomeElement], _ response: Response) in
                 return item
         }
     }

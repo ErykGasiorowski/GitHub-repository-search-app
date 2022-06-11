@@ -7,16 +7,17 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 import RxSwift
 import RxCocoa
 
 class CommitsHistoryTableViewCell: UITableViewCell {
 
-    struct Model {
-        let authorsName: String?
-        let authorsEmail: String?
-        let commitMessage: String?
-    }
+//    struct Model {
+//        let authorsName: String?
+//        let authorsEmail: String?
+//        let commitMessage: String?
+//    }
     
     var disposeBag = DisposeBag()
     
@@ -85,11 +86,11 @@ class CommitsHistoryTableViewCell: UITableViewCell {
         disposeBag = DisposeBag()
     }
     
-    func configure(model: SearchItems) {
+    func config(model: WelcomeElement) {
         //rowNumberLabel.text =
-        commitAuthorNameLabel.text = model.owner.login
-        authorsEmailLabel.text = model.name
-        commitMessageLabel.text = model.fullName
+        commitAuthorNameLabel.text = model.commit.author.name
+        authorsEmailLabel.text = model.commit.author.email
+        commitMessageLabel.text = model.commit.message
         
     }
 
@@ -103,7 +104,7 @@ class CommitsHistoryTableViewCell: UITableViewCell {
         //accessoryType = .disclosureIndicator
 
         rowNumberLabel.snp.makeConstraints {
-            $0.leading.equalTo(contentView.snp.leading).offset(20)
+            $0.leading.equalTo(contentView.snp.leading).offset(5)
             $0.centerY.equalToSuperview()
         }
 

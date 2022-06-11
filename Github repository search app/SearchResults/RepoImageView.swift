@@ -7,12 +7,21 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
+import RxSwift
+import RxCocoa
 
 class RepoImageView: UIView {
 
+    struct Model {
+        let numberOfStars: Int?
+        let authorsName: String?
+        let repoImage: String?
+    }
+    
     private let repoImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.backgroundColor = .systemCyan
         imageView.clipsToBounds = true
         
@@ -30,7 +39,7 @@ class RepoImageView: UIView {
     
     private let repoAuthorNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Repo Author Name"
+        //label.text = "Repo Author Name"
         label.font = .systemFont(ofSize: 26, weight: .bold)
         label.textColor = .white
         label.numberOfLines = 1
@@ -39,7 +48,7 @@ class RepoImageView: UIView {
     
     private let starsCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "Number of Stars (234)"
+        //label.text = "Number of Stars (234)"
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = .systemGray4
         label.numberOfLines = 1
@@ -75,10 +84,18 @@ class RepoImageView: UIView {
         layoutView()
     }
     
-//    func configure(with viewModel: SearchResultsViewModel) {
-////        repoAuthorNameLabel.text = viewModel.
-//
-//    }
+    func setup(model: Model) {
+        repoAuthorNameLabel.text = model.authorsName
+        repoImage.kf.setImage(with: URL(string: model.repoImage ?? ""))
+        
+        if let stars = model.numberOfStars {
+            starsCountLabel.text = String(stars)
+        }
+        else {
+            print(model.numberOfStars)
+            starsCountLabel.text = "0"
+        }
+    }
     
     func layoutView() {
         

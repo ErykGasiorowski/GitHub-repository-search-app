@@ -27,6 +27,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
         
         return vc
     }()
+
     
     let repositoriesTitleLabel: UILabel = {
        let label = UILabel()
@@ -63,15 +64,40 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-//        guard let resultsController = ,
-//              let query = searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else {
-//            return
-//        }
+        guard let query = searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+            return
+        }
+        viewModel.query = searchBar.text!
+        
+        bindToViewModel()
+        viewModel.fetchData()
+        self.searchResultsTableView.reloadData()
+//        private func bindToViewModel() {
+//            viewModel.detailz.subscribe(onNext: { res in
+//                        self.repoDetailsTableView.reloadData()
+//                    }).disposed(by: disposeBag)
+//            }
+//
+        
+        //self.repoDetailsTableView.reloadData()
         
         //resultsController.delegate = self
         
         // Perform search
+        
     }
+//            func update(with results: SearchItems) {
+//                let searchResults = results.filter ({
+//                    switch $0 {
+//                    case .: return true
+//                    default: return false
+//                    }
+//                })
+//
+//                searchResultsTableView.reloadData()
+//                searchResultsTableView.isHidden = results.isEmpty
+//            }
+////
     
     func updateSearchResults(for searchController: UISearchController) {
         //
