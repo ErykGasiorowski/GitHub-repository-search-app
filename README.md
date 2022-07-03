@@ -4,6 +4,9 @@ recruitment task for junior ios dev
 THINGS TO DO
  
 Screen 1
+
+![Simulator Screen Shot - iPhone 12 Pro - 2022-07-03 at 19 16 46](https://user-images.githubusercontent.com/76919604/177050537-8b73511f-9800-449c-ac55-16f3ffa7dd63.png)
+
  
 GitHub
 Repository search results: https://developer.github.com/v3/search/#search-  repositories
@@ -18,7 +21,10 @@ Clicking on the element should take you to the second screen.
 THINGS TO DO
  
 Screen 2
- 
+
+![Simulator Screen Shot - iPhone 12 Pro - 2022-07-03 at 19 18 16](https://user-images.githubusercontent.com/76919604/177050547-fce91631-4092-495e-b642-30f34a66bd05.png)
+
+
 GitHub
 Repository details: https://developer.github.com/v3/repos/#get-a-repository  https://developer.github.com/v3/repos/commits/#list-commits 
 Content
